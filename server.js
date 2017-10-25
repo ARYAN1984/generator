@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
 // DigitalOcean Droplets require private IP
 // https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-centos-7
 //
-app.set( 'host', '10.132.11.88' );
+app.set( 'host', `${PRIVATE_IP}` );
 
 app.listen(50451, () => {
 
