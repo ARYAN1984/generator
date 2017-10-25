@@ -4,7 +4,7 @@ const path = require('path');
 
 const app = express();
 
-const INVITE_CODE = process.env.PRIVATE_IP;
+const PRIVATE_IP = process.env.PRIVATE_IP;
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
