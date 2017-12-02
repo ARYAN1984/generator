@@ -6,7 +6,7 @@ var app = express();
 
 var PRIVATE_IP = process.env.PRIVATE_IP;
 
-var port = 50451;
+var port = 50452;
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
