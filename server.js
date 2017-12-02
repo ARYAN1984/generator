@@ -1,10 +1,12 @@
-const express = require('express');
+var express = require('express');
 
-const path = require('path');
+var path = require('path');
 
-const app = express();
+var app = express();
 
-const PRIVATE_IP = process.env.PRIVATE_IP;
+var PRIVATE_IP = process.env.PRIVATE_IP;
+
+var port = 50451;
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
@@ -21,9 +23,9 @@ app.get('/', (req, res) => {
 //
 app.set( 'host', `${PRIVATE_IP}` );
 
-app.listen(50451, () => {
+app.listen(port, () => {
 
-  console.info('Running on port 50451');
+  console.info('Running on port ' + port);
 
 });
 
