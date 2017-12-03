@@ -19,6 +19,18 @@ const http = require('http');
 //  Reference: https://discordapp.com/developers/docs/topics/response-codes
 //
 
+if (port) {
+
+    console.log('Running on ' + port);
+
+} else {
+
+    var port = 50452;
+
+    console.log('Port was undefined but is now set to ' + port);
+
+}
+
 const { catchAsync } = require('../utils');
 
 const router = express.Router();
@@ -31,7 +43,7 @@ const INVITE_CODE = process.env.INVITE_CODE;
 
 const REDIRECT_URL = process.env.REDIRECT_URL;
 
-const redirect = encodeURIComponent('http://likely.cloud:50451/api/discord/callback');
+const redirect = encodeURIComponent('http://likely.cloud:' + port + '/api/discord/callback');
 
 
 //
