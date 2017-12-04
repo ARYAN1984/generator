@@ -9596,6 +9596,16 @@ var App = function App() {
         { href: 'https://discordapp.com' },
         'discord inc.'
       )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: _styles2.default.block__footer },
+      'I do not save anything. ',
+      _react2.default.createElement(
+        'a',
+        { href: 'https://github.com/orels1/discord-token-generator' },
+        'See sources'
+      )
     )
   );
 };
