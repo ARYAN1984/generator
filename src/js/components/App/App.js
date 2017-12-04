@@ -44,9 +44,6 @@ const App = () => (
     <div className={styles.block__footer}>
       This website is not affiliated with <a href="https://discordapp.com">discord inc.</a>
     </div>
-    <div className={styles.block__footer}>
-      I do not save anything. <a href="https://github.com/orels1/discord-token-generator">See sources</a>
-    </div>
   </div>
 );
 
