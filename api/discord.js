@@ -174,9 +174,9 @@ router.get('/callback', catchAsync(async (req, res) => {
 
     });
 
-  const role_json = await invite_response.json();
+  const role_json = await role_response.json();
 
-console.log(util.inspect(role_json, {sowHidden: false, depth: null}));
+  console.log(util.inspect(role_json, {sowHidden: false, depth: null}));
 
 
   //
