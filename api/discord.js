@@ -37,9 +37,13 @@ const router = express.Router();
 
 const CLIENT_ID = process.env.CLIENT_ID;
 
+const SERVER_ID = process.env.SERVER_ID;
+
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 const INVITE_CODE = process.env.INVITE_CODE;
+
+const ROLE_ID = process.env.ROLE_ID;
 
 const REDIRECT_URL = process.env.REDIRECT_URL;
 
@@ -80,7 +84,7 @@ router.get('/callback', catchAsync(async (req, res) => {
 
         Authorization: `Basic ${creds}`,
 
-      },
+      }
 
   });
 
@@ -103,7 +107,7 @@ router.get('/callback', catchAsync(async (req, res) => {
 
         Authorization: `Bearer ` + token_json.access_token,
 
-      },
+      }
 
   });
 
@@ -116,17 +120,17 @@ router.get('/callback', catchAsync(async (req, res) => {
   //  Get the invite
   //
   const invite_response = await fetch(`https://discordapp.com/api/invites/${INVITE_CODE}`,
-  {
-    
+    {
+
       method: 'GET',
-      
+
       headers: {
-        
+
         Authorization: `Bearer ` + token_json.access_token,
-        
-      },
-      
-  });
+
+      }
+
+    });
   
   const invite_json = await invite_response.json();
 
@@ -137,7 +141,7 @@ router.get('/callback', catchAsync(async (req, res) => {
   //  Accept the invite
   //
   const join_response = await fetch(`https://discordapp.com/api/invites/${INVITE_CODE}`,
-  {
+    {
 
     method: 'POST',
 
@@ -145,13 +149,35 @@ router.get('/callback', catchAsync(async (req, res) => {
 
         Authorization: `Bearer ` + token_json.access_token,
 
-      },
+      }
 
-  });
+    });
 
   const join_json = await join_response.json();
 
   console.log(util.inspect(join_json, {sowHidden: false, depth: null}));
+
+
+  //
+  //  Set the default role
+  //
+  const role_response = await fetch(`https://discordapp.com/api/guilds/${SERVER_ID}/roles`,
+    {
+
+        method: 'GET',
+
+        headers: {
+
+            Authorization: `Bearer ` + token_json.access_token,
+
+        }
+
+    });
+
+  const role_json = await invite_response.json();
+
+console.log(util.inspect(role_json, {sowHidden: false, depth: null}));
+
 
   //
   //  Redirect user
